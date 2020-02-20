@@ -1,0 +1,17 @@
+language: go
+
+script:
+  - go mod download
+  - sleep 15 # wait for mongodb
+  - go test ./...
+
+services:
+  - docker
+  - mongodb
+
+env:
+  - GO111MODULE=on
+
+notifications:
+  email:
+    on_failure: always
